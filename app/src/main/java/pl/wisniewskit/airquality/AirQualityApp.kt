@@ -1,4 +1,4 @@
-package pl.wisniewskit.airquality.ui
+package pl.wisniewskit.airquality
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
