@@ -17,7 +17,7 @@ class StationListViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun loadStations() {
-        state = State(stations = listOf("M1", "M2"))
+        state = State(stations = listOf("Stacja 1", "Stacja 2", "Stacja 3"))
     }
 
     data class State(
