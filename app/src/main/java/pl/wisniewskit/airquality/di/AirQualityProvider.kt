@@ -1,11 +1,11 @@
 package pl.wisniewskit.airquality.di
 
 import android.content.Context
-import androidx.room.Database
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import javax.inject.Singleton
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
@@ -14,14 +14,12 @@ import okhttp3.Response
 import pl.wisniewskit.airquality.data.AirlyStationDataSource
 import pl.wisniewskit.airquality.data.airly.AirlyService
 import pl.wisniewskit.airquality.data.airly.AirlyEndpoint
-import pl.wisniewskit.airquality.data.local.InMemoryStationsRepository
 import pl.wisniewskit.airquality.data.local.db.AppDatabase
 import pl.wisniewskit.airquality.data.local.db.DatabaseStationsRepository
 import pl.wisniewskit.airquality.logic.repository.LocalStationsRepository
 import pl.wisniewskit.airquality.logic.repository.RemoteStationsRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
