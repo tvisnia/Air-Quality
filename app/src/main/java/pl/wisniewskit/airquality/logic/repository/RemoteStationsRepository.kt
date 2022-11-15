@@ -1,4 +1,4 @@
-package pl.wisniewskit.airquality.logic
+package pl.wisniewskit.airquality.logic.repository
 
 import pl.wisniewskit.airquality.entity.AQStation
 
