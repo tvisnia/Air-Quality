@@ -10,6 +10,8 @@ import okhttp3.Response
 import pl.wisniewskit.airquality.data.AirlyStationDataSource
 import pl.wisniewskit.airquality.data.airly.AirlyService
 import pl.wisniewskit.airquality.data.airly.AirlyEndpoint
+import pl.wisniewskit.airquality.data.local.InMemoryStationsRepository
+import pl.wisniewskit.airquality.logic.repository.LocalStationsRepository
 import pl.wisniewskit.airquality.logic.repository.RemoteStationsRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,12 +19,18 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AirQualityProvider {
+class AirQualityProvider {
 
     @Provides
     @Singleton
     fun provideRemoteStationsRepository(airlyService: AirlyService): RemoteStationsRepository {
         return AirlyStationDataSource(airlyService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalStationsRepository(): LocalStationsRepository {
+        return InMemoryStationsRepository()
     }
 
     @Provides
@@ -58,7 +66,7 @@ object AirQualityProvider {
 class AirlyAuthInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val requestBuilder = chain.request().newBuilder()
-        requestBuilder.addHeader("apikey", "YOUR_API_KEY")
+        requestBuilder.addHeader("apikey","dTWGJTxThgqm9yYhE9xOk1xS4zxkYJZs")
         return chain.proceed(requestBuilder.build())
     }
 }
